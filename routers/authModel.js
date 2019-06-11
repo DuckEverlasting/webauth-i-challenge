@@ -2,8 +2,8 @@ const db = require('../data/dbConfig.js');
 
 module.exports = {
   addUser,
-  addSession,
-  getUsers
+  findUsers,
+  findByUsername
 }
 
 function addUser(user) {
@@ -11,10 +11,12 @@ function addUser(user) {
     .insert(user)
 }
 
-function addSession() {
-
+function findUsers() {
+  return db('users').select('id', 'username');
 }
 
-function getUsers() {
-
+function findByUsername(username) {
+  return db('users')
+    .where('username', username)
+    .first();
 }
