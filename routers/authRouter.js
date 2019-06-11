@@ -54,11 +54,11 @@ router.get('/users', restricted, (req, res) => {
 });
 
 
-router.delete('/', (req, res) => {
+router.get('/logout', (req, res) => {
   if (req.session) {
     req.session.destroy();
   }
-  res.status(200).json({ message: 'peace out' });
+  res.status(204).end();
 });
 
 module.exports = router;
